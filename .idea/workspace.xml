@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9798b190-2080-4e73-be6d-1cfeb148967e" name="Changes" comment="Added floor.">
-      <change afterPath="$PROJECT_DIR$/src/images/texture-white-concrete-wall.jpg" afterDir="false" />
+    <list default="true" id="9798b190-2080-4e73-be6d-1cfeb148967e" name="Changes" comment="Added rotation to floor.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/RoboBombeiro/Display.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RoboBombeiro/Display.java" afterDir="false" />
     </list>
@@ -35,21 +34,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;1.8&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Ricardo Sousa/Downloads/Java3D1_6/vecmath.jar&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Global Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "jdk.selected.JAVA_MODULE": "1.8",
+    "last_opened_file_path": "C:/Users/Ricardo Sousa/Downloads/Java3D1_6/vecmath.jar",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Ricardo Sousa\Desktop\RoboBombeiroSimulator\src\images" />
       <recent name="C:\Users\Ricardo Sousa\Desktop\RoboBombeiroSimulator\src\music" />
       <recent name="C:\Users\Ricardo Sousa\Desktop\RoboBombeiroSimulator\src" />
     </key>
@@ -112,7 +112,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673713123190</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Added rotation to floor.">
+      <created>1673714379392</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1673714379392</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -135,6 +142,7 @@
     <MESSAGE value="Created orbit and JMenuBar." />
     <MESSAGE value="Added Sound." />
     <MESSAGE value="Added floor." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added floor." />
+    <MESSAGE value="Added rotation to floor." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added rotation to floor." />
   </component>
 </project>

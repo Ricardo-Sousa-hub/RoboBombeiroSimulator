@@ -1,16 +1,19 @@
 package RoboBombeiro;
 
+import cg3d.appearance.Materials;
+import cg3d.appearance.TextureAppearance;
 import cg3d.shapes.Floor;
 import com.sun.j3d.audioengines.javasound.JavaSoundMixer;
 import com.sun.j3d.utils.behaviors.vp.OrbitBehavior;
+import com.sun.j3d.utils.geometry.Box;
+import com.sun.j3d.utils.geometry.Primitive;
 import com.sun.j3d.utils.picking.PickCanvas;
 import com.sun.j3d.utils.universe.SimpleUniverse;
+import com.sun.j3d.utils.geometry.Box;
 
 import javax.media.j3d.*;
 import javax.swing.*;
-import javax.vecmath.Color3f;
-import javax.vecmath.Point3d;
-import javax.vecmath.Vector3d;
+import javax.vecmath.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -37,6 +40,9 @@ public class Display extends JFrame {
     private boolean isRotating = false;
     private RotationInterpolator rotator = null;
     private Transform3D tr = null;
+    private PointLight pointLight = null;
+
+    private TransformGroup tg;
 
     public void Start() {
         if (!isRunning) {
@@ -203,6 +209,33 @@ public class Display extends JFrame {
 
         rotate(root, tgView);
 
+        AmbientLight ambientLight = new AmbientLight(true, new Color3f(Color.WHITE));
+        ambientLight.setInfluencingBounds(bounds);
+        root.addChild(ambientLight);
+
+        pointLight = new PointLight(new Color3f(Color.YELLOW), new Point3f(5f, -1f, 3f), new Point3f(1f, 0f, 0f));
+        pointLight.setCapability(PointLight.ALLOW_STATE_READ);
+        pointLight.setCapability(PointLight.ALLOW_STATE_WRITE);
+        pointLight.setInfluencingBounds(bounds);
+        root.addChild(pointLight);
+
+        pointLight = new PointLight(new Color3f(Color.BLUE), new Point3f(-2.5f, 2.5f, 2.5f), new Point3f(-1f, 0f, -1f));
+        pointLight.setCapability(PointLight.ALLOW_STATE_READ);
+        pointLight.setCapability(PointLight.ALLOW_STATE_WRITE);
+        pointLight.setInfluencingBounds(bounds);
+        root.addChild(pointLight);
+
+        pointLight = new PointLight(new Color3f(Color.green), new Point3f(-8f, 3f, 3f), new Point3f(-1f, 0f, -1f));
+        pointLight.setCapability(PointLight.ALLOW_STATE_READ);
+        pointLight.setCapability(PointLight.ALLOW_STATE_WRITE);
+        pointLight.setInfluencingBounds(bounds);
+        root.addChild(pointLight);
+
+        SpotLight sLight = new SpotLight(new Color3f(Color.blue), new Point3f(0.5f, 1f, 0f), new Point3f(1f, 0f, 0f),
+                new Vector3f(-1f, -1f, -1f), (float) (Math.PI / 6.0), 0f);
+        sLight.setInfluencingBounds(bounds);
+        root.addChild(sLight);
+
         return root;
     }
 
@@ -224,7 +257,7 @@ public class Display extends JFrame {
         Shape3D floor = new Floor(20, -1f, 2f, new Color3f(Color.WHITE), new Color3f(Color.BLACK), true);
         tr = new Transform3D();
         tr.setTranslation(new Vector3d(-1.1f, -0.5f, 0f));
-        TransformGroup tg = new TransformGroup(tr);
+        tg = new TransformGroup(tr);
         root.addChild(tg);
         tg.addChild(floor);
     }
