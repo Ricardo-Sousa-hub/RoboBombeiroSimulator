@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9798b190-2080-4e73-be6d-1cfeb148967e" name="Changes" comment="Added Sound.">
+    <list default="true" id="9798b190-2080-4e73-be6d-1cfeb148967e" name="Changes" comment="Added floor.">
+      <change afterPath="$PROJECT_DIR$/src/images/texture-white-concrete-wall.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/RoboBombeiro/Display.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RoboBombeiro/Display.java" afterDir="false" />
     </list>
@@ -104,7 +105,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673711755723</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Added floor.">
+      <created>1673713123190</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1673713123190</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -126,6 +134,7 @@
     <MESSAGE value="Added library's." />
     <MESSAGE value="Created orbit and JMenuBar." />
     <MESSAGE value="Added Sound." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Sound." />
+    <MESSAGE value="Added floor." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added floor." />
   </component>
 </project>

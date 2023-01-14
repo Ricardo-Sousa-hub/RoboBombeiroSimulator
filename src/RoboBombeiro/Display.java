@@ -34,12 +34,13 @@ public class Display extends JFrame {
 
     private BoundingSphere bounds = new BoundingSphere();
 
-    //private boolean isRotating = false;
+    private boolean isRotating = false;
+    private RotationInterpolator rotator = null;
+    private Transform3D tr = null;
 
     public void Start() {
         if (!isRunning) {
             isRunning = true;
-
         }
     }
 
@@ -66,12 +67,34 @@ public class Display extends JFrame {
     public void changeMusicState(){
         if(isPlaying){
             stopMusic();
-        }else{
+        }
+        else{
             playMusic();
         }
     }
 
+    private void startRotating(){
+        if(!isRotating){
+            isRotating = true;
+            rotator.setEnable(isRotating);
+        }
+    }
 
+    private void stopRotating(){
+        if(isRotating){
+            isRotating = false;
+            rotator.setEnable(isRotating);
+        }
+    }
+
+    private void changeRotationState(){
+        if(isRotating){
+            stopRotating();
+        }
+        else{
+            startRotating();
+        }
+    }
 
     public static void main(String[] args) {
         JFrame frame = new Display();
@@ -147,6 +170,15 @@ public class Display extends JFrame {
         });
         menuOption.add(menuItem);
 
+        menuItem = new JMenuItem("Ativar/Desativar Rotação");
+        menuItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                changeRotationState();
+            }
+        });
+        menuOption.add(menuItem);
+
         menuBar.add(menuOption);
         setJMenuBar(menuBar);
     }
@@ -169,10 +201,7 @@ public class Display extends JFrame {
 
         floor(root);
 
-        /*Alpha alpha = new Alpha(-1, 30000);
-        RotationInterpolator rotator = new RotationInterpolator(alpha, tgView);
-        rotator.setSchedulingBounds(bounds);
-        root.addChild(rotator);*/
+        rotate(root, tgView);
 
         return root;
     }
@@ -193,10 +222,18 @@ public class Display extends JFrame {
 
     private void floor(BranchGroup root){
         Shape3D floor = new Floor(20, -1f, 2f, new Color3f(Color.WHITE), new Color3f(Color.BLACK), true);
-        Transform3D tr = new Transform3D();
+        tr = new Transform3D();
         tr.setTranslation(new Vector3d(-1.1f, -0.5f, 0f));
         TransformGroup tg = new TransformGroup(tr);
         root.addChild(tg);
         tg.addChild(floor);
+    }
+
+    private void rotate(BranchGroup root, TransformGroup tgView){
+        Alpha alpha = new Alpha(-1, 30000);
+        rotator = new RotationInterpolator(alpha, tgView);
+        rotator.setEnable(isRotating);
+        rotator.setSchedulingBounds(bounds);
+        root.addChild(rotator);
     }
 }
