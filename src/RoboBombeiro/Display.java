@@ -13,6 +13,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
+import java.net.URL;
 
 public class Display extends JFrame {
 
@@ -26,6 +27,8 @@ public class Display extends JFrame {
     private PickCanvas pc;
     private Canvas3D cv;
     private Appearance lit = new Appearance();
+    private boolean isPlaying = true;
+    private PointSound pSound = new PointSound();
 
     BoundingSphere bounds = new BoundingSphere();
 
@@ -36,11 +39,37 @@ public class Display extends JFrame {
         }
     }
 
+
+
     public void Stop() {
         if (isRunning) {
             isRunning = false;
         }
     }
+
+    public void playMusic(){
+        if(!isPlaying){
+            isPlaying = true;
+            pSound.setEnable(isPlaying);
+        }
+    }
+
+    public void stopMusic(){
+        if(isPlaying){
+            isPlaying = false;
+            pSound.setEnable(isPlaying);
+        }
+    }
+
+    public void changeMusicState(){
+        if(isPlaying){
+            stopMusic();
+        }else{
+            playMusic();
+        }
+    }
+
+
 
     public static void main(String[] args) {
         JFrame frame = new Display();
@@ -105,14 +134,45 @@ public class Display extends JFrame {
                 System.exit(0);
             }
         });
+        menuOption.add(menuItem);
+
+        menuItem = new JMenuItem("Ativar/Desativar Som de fundo");
+        menuItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                changeMusicState();
+            }
+        });
+        menuOption.add(menuItem);
 
         menuBar.add(menuOption);
-        menuOption.add(menuItem);
         setJMenuBar(menuBar);
     }
 
     private BranchGroup createSceneGraph(TransformGroup tgView) {
         BranchGroup root = new BranchGroup();
+
+        BoundingSphere soundBounds = new BoundingSphere(new Point3d(0.0, 0.0, 0.0), 10.0);
+
+        Transform3D trans = new Transform3D();
+        TransformGroup objTg = new TransformGroup(trans);
+        objTg.setCapability(TransformGroup.ALLOW_TRANSFORM_WRITE);
+        objTg.setCapability(TransformGroup.ALLOW_TRANSFORM_READ);
+        root.addChild(objTg);
+
+        URL url = this.getClass().getClassLoader().getResource("music/Bohemian Rhapsody MrChicken cover.wav");
+        MediaContainer mc = new MediaContainer(url);
+        pSound.setSoundData(mc);
+        pSound.setLoop(Sound.INFINITE_LOOPS);
+        pSound.setCapability(Sound.ALLOW_ENABLE_WRITE);
+        pSound.setInitialGain(1f); //1f
+        float[] distances = { 1f, 10f };
+        float[] gains = { 1f, 0.001f };
+        pSound.setDistanceGain(distances, gains);
+        pSound.setSchedulingBounds(soundBounds);
+        pSound.setEnable(true);
+        objTg.addChild(pSound);
+
 
         return root;
     }
