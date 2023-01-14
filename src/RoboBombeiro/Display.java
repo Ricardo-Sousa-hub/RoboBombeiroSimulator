@@ -1,5 +1,6 @@
 package RoboBombeiro;
 
+import cg3d.shapes.Floor;
 import com.sun.j3d.audioengines.javasound.JavaSoundMixer;
 import com.sun.j3d.utils.behaviors.vp.OrbitBehavior;
 import com.sun.j3d.utils.picking.PickCanvas;
@@ -7,6 +8,7 @@ import com.sun.j3d.utils.universe.SimpleUniverse;
 
 import javax.media.j3d.*;
 import javax.swing.*;
+import javax.vecmath.Color3f;
 import javax.vecmath.Point3d;
 import javax.vecmath.Vector3d;
 import java.awt.*;
@@ -30,7 +32,9 @@ public class Display extends JFrame {
     private boolean isPlaying = true;
     private PointSound pSound = new PointSound();
 
-    BoundingSphere bounds = new BoundingSphere();
+    private BoundingSphere bounds = new BoundingSphere();
+
+    //private boolean isRotating = false;
 
     public void Start() {
         if (!isRunning) {
@@ -38,8 +42,6 @@ public class Display extends JFrame {
 
         }
     }
-
-
 
     public void Stop() {
         if (isRunning) {
@@ -162,18 +164,39 @@ public class Display extends JFrame {
 
         URL url = this.getClass().getClassLoader().getResource("music/Bohemian Rhapsody MrChicken cover.wav");
         MediaContainer mc = new MediaContainer(url);
+
+        objTg.addChild(sound(url, mc, pSound, soundBounds));
+
+        floor(root);
+
+        /*Alpha alpha = new Alpha(-1, 30000);
+        RotationInterpolator rotator = new RotationInterpolator(alpha, tgView);
+        rotator.setSchedulingBounds(bounds);
+        root.addChild(rotator);*/
+
+        return root;
+    }
+
+    private PointSound sound(URL url, MediaContainer mc, PointSound pSound, BoundingSphere soundBounds){
         pSound.setSoundData(mc);
         pSound.setLoop(Sound.INFINITE_LOOPS);
         pSound.setCapability(Sound.ALLOW_ENABLE_WRITE);
-        pSound.setInitialGain(1f); //1f
+        pSound.setInitialGain(1f);
         float[] distances = { 1f, 10f };
         float[] gains = { 1f, 0.001f };
         pSound.setDistanceGain(distances, gains);
         pSound.setSchedulingBounds(soundBounds);
         pSound.setEnable(true);
-        objTg.addChild(pSound);
 
+        return pSound;
+    }
 
-        return root;
+    private void floor(BranchGroup root){
+        Shape3D floor = new Floor(20, -1f, 2f, new Color3f(Color.WHITE), new Color3f(Color.BLACK), true);
+        Transform3D tr = new Transform3D();
+        tr.setTranslation(new Vector3d(-1.1f, -0.5f, 0f));
+        TransformGroup tg = new TransformGroup(tr);
+        root.addChild(tg);
+        tg.addChild(floor);
     }
 }

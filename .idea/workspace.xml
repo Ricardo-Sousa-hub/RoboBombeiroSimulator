@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9798b190-2080-4e73-be6d-1cfeb148967e" name="Changes" comment="Created orbit and JMenuBar.">
-      <change afterPath="$PROJECT_DIR$/src/music/Bohemian Rhapsody MrChicken cover.wav" afterDir="false" />
+    <list default="true" id="9798b190-2080-4e73-be6d-1cfeb148967e" name="Changes" comment="Added Sound.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/RoboBombeiro/Display.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RoboBombeiro/Display.java" afterDir="false" />
     </list>
@@ -98,7 +97,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673638880328</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Added Sound.">
+      <created>1673711755723</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1673711755723</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -119,6 +125,7 @@
     <MESSAGE value="Reder." />
     <MESSAGE value="Added library's." />
     <MESSAGE value="Created orbit and JMenuBar." />
-    <option name="LAST_COMMIT_MESSAGE" value="Created orbit and JMenuBar." />
+    <MESSAGE value="Added Sound." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Sound." />
   </component>
 </project>
